@@ -3,7 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+//db
+const mysql=require('./routes/database');
+//routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -26,7 +28,30 @@ app.use('/users', usersRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
+//create mysql tables
+//users
+let usersTable = `create table if not exists users (
+  userId int primary key auto_increment,
+  nationality varchar(50) not null,
+  idNumber int not null,
+  name varchar(50)  not null,
+  surname varchar(50) not null,
+  birthdate varchar(50) not null,
+  birthplace varchar(50) not null,
+  phoneNum varchar(50) not null,
+  adress varchar(200) not null,
+  currentComp varchar(50) ,
+  currentRole varchar(50) ,
+  school varchar(50) not null,
+  department varchar(50) not null,
+  languages varchar(200) ,
+  certificate varchar(200)                
+)`;
+mysql.query(usersTable, function(err, results, fields) {
+  if (err) {
+  console.log(err.message);
+  }
+});
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
