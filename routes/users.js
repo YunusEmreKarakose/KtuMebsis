@@ -17,6 +17,7 @@ router.post('/createUser', function(req, res, next) {
     currentRole:req.body.currentRole,
     school:req.body.school,
     department:req.body.department,
+    graduateyear:req.body.graduateyear,
     languages:req.body.languages,
     certificate:req.body.certificate
   };

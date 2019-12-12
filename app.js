@@ -8,6 +8,7 @@ const mysql=require('./routes/database');
 //routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var companiesRouter = require('./routes/companies');
 
 var app = express();
 
@@ -23,27 +24,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/companies', companiesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 //create mysql tables
-//users
+//users (mezunlar)
 let usersTable = `create table if not exists users (
   userId int primary key auto_increment,
   nationality varchar(50) not null,
   idNumber int not null,
   name varchar(50)  not null,
   surname varchar(50) not null,
-  birthdate varchar(50) not null,
+  birthdate varchar(12) not null,
   birthplace varchar(50) not null,
-  phoneNum varchar(50) not null,
+  phoneNum varchar(11) not null,
   adress varchar(200) not null,
   currentComp varchar(50) ,
   currentRole varchar(50) ,
   school varchar(50) not null,
   department varchar(50) not null,
+  graduateyear int not null,
   languages varchar(200) ,
   certificate varchar(200)                
 )`;
@@ -52,6 +55,72 @@ mysql.query(usersTable, function(err, results, fields) {
   console.log(err.message);
   }
 });
+//companies (firma bilgileri)
+let companiesTable = `create table if not exists companies ( 
+    cId int primary key auto_increment,    
+    name varchar(50) not null,
+    phone varchar(11) not null,
+    adress varchar(100) not null,
+    info varchar(200) not null
+)`;
+mysql.query(companiesTable, function(err, results, fields) {
+  if (err) {
+  console.log(err.message);
+  }
+});
+//posts(staj ve iş ilanları)
+let posts = `create table if not exists posts ( 
+  pId int primary key auto_increment,    
+  senderId int not null,
+  type varchar(11) not null,
+  duration int,
+  company varchar(50) not null,
+  period varchar(10),
+  info varchar(400) not null
+)`;
+mysql.query(posts, function(err, results, fields) {
+if (err) {
+console.log(err.message);
+}
+});
+// eski çalışma durumları
+let ex = `create table if not exists ex ( 
+    cId int not null,
+    userId int not null,
+    startyear int not null,
+    endyear int not null
+)`;
+mysql.query(ex, function(err, results, fields) {
+if (err) {
+console.log(err.message);
+}
+});
+//comments
+let comments = `create table if not exists comments ( 
+  pId int not null,
+  userId int not null,
+  comment int not null,
+  date varchar(50) not null
+)`;
+mysql.query(comments, function(err, results, fields) {
+if (err) {
+console.log(err.message);
+}
+});
+//message
+let messages = `create table if not exists messages ( 
+  mId int not null,
+  senderId int not null,
+  targetId int not null,
+  message varchar(200) not null,
+  date varchar(50) not null
+)`;
+mysql.query(messages, function(err, results, fields) {
+if (err) {
+console.log(err.message);
+}
+});
+//tablolar oluşturuldu
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
