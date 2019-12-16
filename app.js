@@ -61,6 +61,7 @@ let usersTable = `create table if not exists users (
   currentRole varchar(50) ,
   school varchar(50) not null,
   department varchar(50) not null,
+  stuNum int not null,
   graduateyear int not null,
   languages varchar(200) ,
   certificate varchar(200)                

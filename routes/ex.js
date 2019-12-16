@@ -4,20 +4,34 @@ const mysql=require('./database');
 
 /* GET home page. */
 router.post('/createEx', function(req, res, next) {
-  let post={
-    cId:req.body.cId,
-    userId:req.body.userId,
-    startyear:req.body.startyear,
-    endyear:req.body.endyear
-  };
-  
+  if(req.session.idNumber){
+      //get cId from companies table
+      var q1="SELECT * FROM companies WHERE name=?";
+      let qqq=mysql.query(q1,req.body.name,function(err, results, fields) {
+            if (err) {
+              console.log(err.message);
+            }else{               
+              let post={
+                cId:results[0].cId,
+                userId:req.session.idNumber,
+                startyear:req.body.startyear,
+                endyear:req.body.endyear
+              };   
+              setEx(post);
+            }
+        });
+      //
+      res.redirect('/ex');
+  }else{
+    res.redirect('/');
+  }  
+});
+function setEx(post){   
   let postquery='INSERT INTO ex SET ?';
   mysql.query(postquery,post, function(err, results, fields) {
     if (err) {
     console.log(err.message);
     }
   });
-  res.render('index', { title: 'Express' });
-});
-
+}
 module.exports = router;
