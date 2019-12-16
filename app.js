@@ -9,6 +9,10 @@ const mysql=require('./routes/database');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var companiesRouter = require('./routes/companies');
+var commentsRouter = require('./routes/comments');
+var exRouter = require('./routes/ex');
+var messageRouter = require('./routes/message');
+var postsRouter = require('./routes/posts');
 
 var app = express();
 
@@ -21,10 +25,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//use routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/comment', commentsRouter);
 app.use('/companies', companiesRouter);
+app.use('/ex', exRouter);
+app.use('/message', messageRouter);
+app.use('/post', postsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
