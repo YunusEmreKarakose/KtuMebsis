@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 //db
 const mysql=require('./routes/database');
 //routes
@@ -15,7 +16,12 @@ var messageRouter = require('./routes/message');
 var postsRouter = require('./routes/posts');
 
 var app = express();
-
+//
+app.use(session({
+  secret: 'veriodev2k19',
+  resave: false,
+  saveUninitialized: true
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -44,6 +50,7 @@ let usersTable = `create table if not exists users (
   userId int primary key auto_increment,
   nationality varchar(50) not null,
   idNumber int not null unique,
+  password varchar(50) not null,
   name varchar(50)  not null,
   surname varchar(50) not null,
   birthdate varchar(12) not null,

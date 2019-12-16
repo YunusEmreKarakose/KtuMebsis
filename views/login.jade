@@ -1,0 +1,117 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Sign-Up/Login Form
+    link(href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
+    link(rel='stylesheet', href='./css/style.css')
+  body
+    // partial:index.partial.html
+    .form
+      ul.tab-group
+        li.tab.active
+          a(href='#signup') Kayıt Ol
+        li.tab
+          a(href='#login') Giris Yap
+      .tab-content
+        #signup
+          h1 Kayıt Ol
+          form(action='/users/createUser', method='post')
+            .top-row
+              .field-wrap
+                label
+                  | İsim
+                  span.req *
+                input(type='text', required='', autocomplete='off',name='name')
+              .field-wrap
+                label
+                  | Soyisim
+                  span.req *
+                input(type='text', required='', autocomplete='off',name='surname')
+            .field-wrap
+              label
+                | Uyruk
+                span.req *
+              input(type='text', required='', autocomplete='off',name='nationality')
+            .field-wrap
+              label
+                | Kimlik No
+                span.req *
+              input(type='number', required='', autocomplete='off',name='idNumber')
+            .field-wrap
+              label
+                | Doğum Tarihi gg/aa/yyyy
+                span.req *
+              input(type='text', required='', autocomplete='off',name='birthdate')
+            .field-wrap
+              label
+                | Doğum Yeri
+                span.req *
+              input(type='text', required='', autocomplete='off',name='birthplace')
+            .field-wrap
+              label
+                | Telefon Numarası
+                span.req *
+              input(type='number', required='', autocomplete='off',name='phoneNum')
+            .field-wrap
+              label
+                | Adres
+                span.req *
+              input(type='text', required='', autocomplete='off',name='adress')
+            .field-wrap
+              label
+                | Şirket
+              input(type='text', autocomplete='off',name='currentComp')
+            .field-wrap
+              label
+                | Rol
+              input(type='text', autocomplete='off',name='currentRole')
+            .field-wrap
+              label
+                | Okul
+                span.req *
+              input(type='text', required='', autocomplete='off',name='school')
+            .field-wrap
+              label
+                | Bölüm
+                span.req *
+              input(type='text', required='', autocomplete='off',name='department')
+            .field-wrap
+              label
+                | Diller(a,b,c)
+              input(type='text', autocomplete='off',name='languages')
+            .field-wrap
+              label
+                | Sertifikalar(a,b,c)
+              input(type='text', autocomplete='off',name='certificate')
+            .field-wrap
+              label
+                | Mezuniyet Yılı
+                span.req *
+              input(type='Number', required='', autocomplete='off',name='graduateyear')
+            .field-wrap
+              label
+                | Şifre
+                span.req *
+              input(type='password', required='', autocomplete='off',name='password')
+            button.button.button-block(type='submit') Kayıt Ol
+        #login
+          h1 Giris Yap
+          form(action='/users/login', method='post')
+            .field-wrap
+              label
+                | Kimlik No
+                span.req *
+              input(type='number', required='', autocomplete='off',name='idNumber')
+            .field-wrap
+              label
+                | Sifre
+                span.req *
+              input(type='password', required='', autocomplete='off',name='password')
+            button.button.button-block Giris Yap
+      // tab-content
+      // /form
+      // partial
+      script(src='vendor/jquery/jquery.min.js')
+      script(src='./script.js')

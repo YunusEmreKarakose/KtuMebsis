@@ -19,7 +19,8 @@ router.post('/createUser', function(req, res, next) {
     department:req.body.department,
     graduateyear:req.body.graduateyear,
     languages:req.body.languages,
-    certificate:req.body.certificate
+    certificate:req.body.certificate,
+    password:req.body.password
   };
   
   let postquery='INSERT INTO users SET ?';
@@ -28,7 +29,24 @@ router.post('/createUser', function(req, res, next) {
     console.log(err.message);
     }
   });
-  res.send('respond with a resource');
+  res.redirect('/');
 });
 
+router.post('/login',function(req,res,next){
+  var sessid=req.body.idNumber;
+  var pass=req.body.password;
+  
+  let login='SELECT * FROM users WHERE idNumber=? AND password=?';
+  mysql.query(login,[sessid,pass], function(err, results, fields) {
+    if (err) {
+      console.log(err.message);
+      req.session.idNumber=0;
+      res.redirect('/');
+    }else{
+      req.session.idNumber=sessid;
+      req.session.password=pass;      
+      res.redirect('/mp')
+    }
+  });
+});
 module.exports = router;
