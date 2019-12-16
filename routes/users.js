@@ -20,7 +20,8 @@ router.post('/createUser', function(req, res, next) {
     graduateyear:req.body.graduateyear,
     languages:req.body.languages,
     certificate:req.body.certificate,
-    password:req.body.password
+    password:req.body.password,
+    stuNum:req.body.stuNum
   };
   
   let postquery='INSERT INTO users SET ?';
