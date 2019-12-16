@@ -107,7 +107,7 @@ console.log(err.message);
 let comments = `create table if not exists comments ( 
   pId int not null,
   userId int not null,
-  comment int not null,
+  comment varchar(200) not null,
   date varchar(50) not null
 )`;
 mysql.query(comments, function(err, results, fields) {
