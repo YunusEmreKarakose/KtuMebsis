@@ -117,7 +117,7 @@ console.log(err.message);
 });
 //message
 let messages = `create table if not exists messages ( 
-  mId int not null,
+  mId int primary key auto_increment,
   senderId int not null,
   targetId int not null,
   message varchar(200) not null,
