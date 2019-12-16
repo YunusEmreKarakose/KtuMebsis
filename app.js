@@ -27,12 +27,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //use routers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/comment', commentsRouter);
-app.use('/companies', companiesRouter);
-app.use('/ex', exRouter);
-app.use('/message', messageRouter);
-app.use('/post', postsRouter);
+app.use('/users', usersRouter);//mezunlar
+app.use('/comment', commentsRouter);//yorum
+app.use('/companies', companiesRouter);//firmalar
+app.use('/ex', exRouter);//eski çalışma bilgileri
+app.use('/message', messageRouter);//messajlar
+app.use('/post', postsRouter);//paylaşım(staj iş ilanı)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,12 +43,12 @@ app.use(function(req, res, next) {
 let usersTable = `create table if not exists users (
   userId int primary key auto_increment,
   nationality varchar(50) not null,
-  idNumber int not null,
+  idNumber int not null unique,
   name varchar(50)  not null,
   surname varchar(50) not null,
   birthdate varchar(12) not null,
   birthplace varchar(50) not null,
-  phoneNum varchar(11) not null,
+  phoneNum varchar(11) not null unique,
   adress varchar(200) not null,
   currentComp varchar(50) ,
   currentRole varchar(50) ,
@@ -67,7 +67,7 @@ mysql.query(usersTable, function(err, results, fields) {
 let companiesTable = `create table if not exists companies ( 
     cId int primary key auto_increment,    
     name varchar(50) not null,
-    phone varchar(11) not null,
+    phone varchar(11) not null unique,
     adress varchar(100) not null,
     info varchar(200) not null
 )`;

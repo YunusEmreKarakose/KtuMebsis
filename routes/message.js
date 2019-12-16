@@ -3,7 +3,7 @@ var router = express.Router();
 const mysql=require('./database');
 
 /* GET home page. */
-router.post('/createComp', function(req, res, next) {
+router.post('/sendMessage', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
