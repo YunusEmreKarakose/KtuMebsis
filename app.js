@@ -14,6 +14,7 @@ var commentsRouter = require('./routes/comments');
 var exRouter = require('./routes/ex');
 var messageRouter = require('./routes/message');
 var postsRouter = require('./routes/posts');
+var getRouter = require('./routes/get');
 
 var app = express();
 //
@@ -39,6 +40,7 @@ app.use('/companies', companiesRouter);//firmalar
 app.use('/ex', exRouter);//eski çalışma bilgileri
 app.use('/message', messageRouter);//messajlar
 app.use('/post', postsRouter);//paylaşım(staj iş ilanı)
+app.use('/get', getRouter);//paylaşım(staj iş ilanı)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

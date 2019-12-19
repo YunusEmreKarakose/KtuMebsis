@@ -55,6 +55,15 @@ router.get('/pst', function(req, res, next) {
     res.redirect('/');
   }
 });
+//Get yorum page(paylaşım yapma sayfası)
+router.get('/yrm', function(req, res, next) {
+  if(req.session.idNumber){
+    res.render('comment', { title: 'Express' });
+  }else{
+    console.log(" no session");
+    res.redirect('/');
+  }
+});
 //Get sorgu page(sorgulamalar)
 router.get('/gt', function(req, res, next) {
   if(req.session.idNumber){

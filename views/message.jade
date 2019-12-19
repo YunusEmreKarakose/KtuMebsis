@@ -58,35 +58,20 @@ html(lang='en')
             .form
                 .tab-content
                     #signup
-                    h1 Paylaşım
-                    form(action='/post/post', method='post')
+                    h1 Mesaj
+                    form(action='/message/sendMessage', method='post')
                         .top-row
                         .field-wrap
                             label
-                            | Tip
+                            | Hedef Id Number
                             span.req *
-                            input(type='text', required='', autocomplete='off',name='type')
+                            input(type='text', required='', autocomplete='off',name='targetId')
                         .field-wrap
                             label
-                            | Gün 
+                            | Mesaj 
                             span.req *
-                            input(type='text', required='', autocomplete='off',name='duration')
-                        .field-wrap
-                        label
-                            | Şirket
-                            span.req *
-                        input(type='text', required='', autocomplete='off',name='company')
-                        .field-wrap
-                        label
-                            | Periyot
-                            span.req *
-                        input(type='text', required='', autocomplete='off',name='period')
-                        .field-wrap
-                        label
-                            | Bilgi
-                            span.req *
-                        input(type='text', required='', autocomplete='off',name='info')
-                        button.button.button-block(type='submit') Kaydet
+                            input(type='text', required='', autocomplete='off',name='message')
+                        button.button.button-block(type='submit') Gönder
                 // tab-content
                 // /form
       // /#page-content-wrapper

@@ -1,0 +1,83 @@
+var express = require('express');
+var router = express.Router();
+const mysql=require('./database');
+
+/* En çok mezunun çalıştığı firma görüntülenebilmelidir. */
+router.get('/get1', function(req, res, next) {
+  if(req.session.idNumber){
+    let getquery='SELECT COUNT(currentComp) AS c,currentComp AS most FROM veri_odev_2019.users GROUP BY currentComp ORDER BY Count(currentComp) DESC';
+    mysql.query(getquery, function(err, results, fields) {
+      if (err) {
+      console.log(err.message);
+      }else{
+        var m=results[0].most;
+        var cc=results[0].c
+        res.send("en çok  "+m+" şirketinde "+cc+" kişi çalışıyor");
+      }
+    });
+  }else{
+    res.redirect('/');
+  }
+});
+/*Iş ilanları; çalışma alanına ve firmaya göre filtrelenebilmelidir. */
+router.post('/get2', function(req, res, next) {
+    if(req.session.idNumber){
+      if(req.body.type){
+        let getquery="SELECT * FROM posts WHERE type=?"         
+        mysql.query(getquery,req.body.type, function(err, results, fields) {
+          if (err) {
+          console.log(err.message);
+          }else{
+            res.send(results);
+          }
+        });
+      }else if(req.body.name){
+        let getquery="SELECT * FROM posts WHERE company=?"         
+        mysql.query(getquery,req.body.name, function(err, results, fields) {
+          if (err) {
+          console.log(err.message);
+          }else{
+            res.send(results);
+          }
+        });
+      }
+    }else{
+      res.redirect('/');
+    }
+});
+/*Staj ilanları ise staj dönemi, süresi ve firmaya göre filtrelenebilmelidir.  */
+router.post('/get3', function(req, res, next) {
+    if(req.session.idNumber){
+      if(req.body.period){
+        let getquery="SELECT * FROM posts WHERE period=?"         
+        mysql.query(getquery,req.body.period, function(err, results, fields) {
+          if (err) {
+          console.log(err.message);
+          }else{
+            res.send(results);
+          }
+        });
+      }else if(req.body.name){
+        let getquery="SELECT * FROM posts WHERE company=?"         
+        mysql.query(getquery,req.body.name, function(err, results, fields) {
+          if (err) {
+          console.log(err.message);
+          }else{
+            res.send(results);
+          }
+        });
+      }else if(req.body.duration){
+        let getquery="SELECT * FROM posts WHERE duration=?"         
+        mysql.query(getquery,req.body.duration, function(err, results, fields) {
+          if (err) {
+          console.log(err.message);
+          }else{
+            res.send(results);
+          }
+        });
+      }
+    }else{
+      res.redirect('/');
+    }
+});
+module.exports = router;
