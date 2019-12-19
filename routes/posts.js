@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mysql=require('./database');
 
-/* GET home page. */
+/* POST AT */
 router.post('/post', function(req, res, next) { 
   if(req.session.idNumber){ 
     let post={

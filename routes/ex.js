@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mysql=require('./database');
 
-/* GET home page. */
+/* Eski Çalışma bilgileri oluştur */
 router.post('/createEx', function(req, res, next) {
   if(req.session.idNumber){
       //get cId from companies table
@@ -26,6 +26,7 @@ router.post('/createEx', function(req, res, next) {
     res.redirect('/');
   }  
 });
+// eski çalışma bilgisini kaydet
 function setEx(post){   
   let postquery='INSERT INTO ex SET ?';
   mysql.query(postquery,post, function(err, results, fields) {
