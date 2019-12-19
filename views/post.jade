@@ -1,11 +1,10 @@
-doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='description', content='')
     meta(name='author', content='')
-    title Paylaşım Yap
+    title KTU MEBSIS ANASAYFA
     // Bootstrap core CSS
     link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // Custom styles for this template
@@ -14,7 +13,7 @@ html(lang='en')
     #wrapper.d-flex
       // Sidebar
       #sidebar-wrapper.bg-light.border-right
-        .sidebar-heading KTU MEBSİS-P
+        .sidebar-heading KTU MEBSİS 
         .list-group.list-group-flush        
           form(action='/cmp', method='get')
             button.list-group-item.list-group-item-action.bg-light(type='submit') Firma Bilgisi Oluştur
@@ -22,6 +21,8 @@ html(lang='en')
             button.list-group-item.list-group-item-action.bg-light(type='submit') Eski Çalışma Bilgisi Kaydet
           form(action='/pst', method='get')
             button.list-group-item.list-group-item-action.bg-light(type='submit') Paylaşım Yap
+          form(action='/yrm', method='get')
+            button.list-group-item.list-group-item-action.bg-light(type='submit') Yorum Yap
           form(action='/msg', method='get')
             button.list-group-item.list-group-item-action.bg-light(type='submit') Mesaj At
           form(action='/gt', method='get')
@@ -48,8 +49,8 @@ html(lang='en')
                 .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdown')
                   form(action='/mp', method='get')
                     button.dropdown-item(type='submit') Anasayfa
-                  form(action='/mp', method='get')
-                    button.dropdown-item(type='submit') Anasayfa
+                  form(action='/anket', method='get')
+                    button.dropdown-item(type='submit') Mezun Anket
                   .dropdown-divider
                   form(action='/quit', method='get')
                     button.dropdown-item(type='submit') Çıkış

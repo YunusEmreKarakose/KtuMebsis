@@ -5,7 +5,7 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='description', content='')
     meta(name='author', content='')
-    title KTU MEBSIS ANASAYFA
+    title Mezun Anket
     // Bootstrap core CSS
     link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // Custom styles for this template
@@ -56,35 +56,15 @@ html(lang='en')
                   form(action='/quit', method='get')
                     button.dropdown-item(type='submit') Çıkış
         .container-fluid
-            .form
-                .tab-content
-                    #signup
-                    h1 Firma Bilgisi Gir
-                    form(action='/companies/createComp', method='post')
-                        .top-row
-                        .field-wrap
-                            label
-                            | İsim
-                            span.req *
-                            input(type='text', required='', autocomplete='off',name='name')
-                        .field-wrap
-                            label
-                            | Telefon
-                            span.req *
-                            input(type='text', required='', autocomplete='off',name='phone')
-                        .field-wrap
-                        label
-                            | Adress
-                            span.req *
-                        input(type='text', required='', autocomplete='off',name='adress')
-                        .field-wrap
-                        label
-                            | Bilgi
-                            span.req *
-                        input(type='text', required='', autocomplete='off',name='info')
-                        button.button.button-block(type='submit') Kaydet
-                // tab-content
-                // /form
+          h1.mt-4 Simple Sidebar
+          p
+            | The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.
+          p
+            | Make sure to keep all page content within the 
+            code #page-content-wrapper
+            | . The top navbar is optional, and just for demonstration. Just create an element with the 
+            code #menu-toggle
+            |  ID which will toggle the menu when clicked.
       // /#page-content-wrapper
       // /#wrapper
       // Bootstrap core JavaScript
