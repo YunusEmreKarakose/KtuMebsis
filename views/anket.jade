@@ -64,14 +64,74 @@ html(lang='en')
                         .top-row
                         .field-wrap
                             label
-                            | postId
+                            | Numara
                             span.req *
-                            input(type='text', required='', autocomplete='off',name='pId')
+                            input(type='number', required='', autocomplete='off',name='stuNum')
                         .field-wrap
                             label
-                            | YORUM 
+                            | İsim Soyisim 
                             span.req *
-                            input(type='text', required='', autocomplete='off',name='comment')
+                            input(type='text', required='', autocomplete='off',name='namesurname')
+                        .field-wrap
+                            label
+                            | Mezuniyet Yılı 
+                            span.req *
+                            input(type='number', required='', autocomplete='off',name='gyear')
+                        .field-wrap
+                            label
+                            | Email 
+                            span.req *
+                            input(type='email', required='', autocomplete='off',name='email')
+                        .field-wrap
+                            label
+                            | Telefon 
+                            span.req *
+                            input(type='text', required='', autocomplete='off',name='phone')
+                        .field-wrap
+                            label
+                            | Program(Lisans I. Öğr,Lisans II. Öğr,Yüksek Lisans,Doktora) 
+                            span.req *
+                            input(type='text', autocomplete='off',name='program')
+                        .field-wrap
+                            label
+                            | Adress 
+                            span.req *
+                            input(type='text', autocomplete='off',name='adress')
+                        .field-wrap
+                            label
+                            | En Yoğun Kullanılan Sosyal Medya Profili 
+                            span.req *
+                            input(type='text', autocomplete='off',name='eyksmp')
+                        .field-wrap
+                            label
+                            | Mezuniyet Durumu( Yeni / Eski) 
+                            span.req *
+                            input(type='text', autocomplete='off',name='md')
+                        .field-wrap
+                            label
+                            | Ders ve İçerikleri Hakkında Önerileriniz 
+                            span.req *
+                            input(type='text', autocomplete='off',name='diio')
+                        .field-wrap
+                            label
+                            | Şehir ve Kampüs Hakkında Görüşleriniz 
+                            span.req *
+                            input(type='text', autocomplete='off',name='skhg')
+                        .field-wrap
+                            label
+                            | Akademik ve İdari Personel Hakkında Düşünceleriniz 
+                            span.req *
+                            input(type='text', autocomplete='off',name='aiphg')
+                        .field-wrap
+                            label
+                            | Öğrenci Olanlara Tavsiyeleriniz 
+                            span.req *
+                            input(type='text', autocomplete='off',name='advicetostu')
+                        .field-wrap
+                            label
+                            | EK 
+                            span.req *
+                            input(type='text', autocomplete='off',name='plus')
                         button.button.button-block(type='submit') Gönder
       // /#page-content-wrapper
       // /#wrapper

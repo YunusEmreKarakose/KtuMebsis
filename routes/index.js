@@ -82,6 +82,15 @@ router.get('/prf', function(req, res, next) {
     res.redirect('/');
   }
 });
+//Get anket page
+router.get('/anket', function(req, res, next) {
+  if(req.session.idNumber){
+    res.render('anket', { title: 'Express' });
+  }else{
+    console.log(" no session");
+    res.redirect('/');
+  }
+});
 //quit
 router.get('/quit', function(req, res, next) {
     req.session.idNumber=0;

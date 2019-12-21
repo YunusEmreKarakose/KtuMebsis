@@ -73,4 +73,34 @@ router.get('/most', function(req, res, next) {
   }
 });
 /* ANKET */
+router.post('/anket', function(req, res, next) { 
+  if(req.session.idNumber){ 
+    let a={
+      stuNum:req.body.stuNum,
+      namesurname:req.body.namesurname,
+      gyear:req.body.gyear,
+      email:req.body.email,
+      phone:req.body.phone,
+      program:req.body.program,
+      adress:req.body.adress,
+      eyksmp:req.body.eyksmp,
+      md:req.body.md,
+      diio:req.body.diio,
+      skhg:req.body.skhg,
+      aiphg:req.body.aiphg,
+      advicetostu:req.body.advicetostu,
+      plus:req.body.plus
+    };
+    
+    let postquery='INSERT INTO anket SET ?';
+    mysql.query(postquery,a, function(err, results, fields) {
+      if (err) {
+      console.log(err.message);
+      }
+    });
+    res.redirect('/');
+  }else{
+    res.redirect('/');
+  }
+});
 module.exports = router;

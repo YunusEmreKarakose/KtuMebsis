@@ -98,6 +98,13 @@ html(lang='en')
                     p5 Hangi Şirkette Ne Kadar Mezun Var
                     form(action='/get/get6', method='get')
                         button.button.button-block(type='submit') Sorgula
+                    p6 Öğrenci no ile anket dolduruldumu sorgusu
+                    form(action='/get/get7', method='post')
+                        .field-wrap
+                            label
+                            | Öğrenci No 
+                            input(type='text', autocomplete='off',name='stuNum')
+                        button.button.button-block(type='submit') Sorgula 
                 // tab-content
                 // /form
       // /#page-content-wrapper

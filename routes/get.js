@@ -127,4 +127,23 @@ router.get('/get6', function(req, res, next) {
     res.redirect('/');
   }
 });
+/* öğrenci no ile anket sorgula*/
+router.post('/get7', function(req, res, next) {
+  if(req.session.idNumber){
+    let getquery='SELECT * FROM anket WHERE stuNum=?';
+    mysql.query(getquery,req.body.stuNum, function(err, results, fields) {
+      if (err) {
+      console.log(err.message);
+      }else{
+        if(results.length>0){            
+          res.send(results);
+        }else{
+          res.send("anket "+req.body.stuNum+" tarafından doldurulmamış");
+        }
+      }
+    });
+  }else{
+    res.redirect('/');
+  }
+});
 module.exports = router;

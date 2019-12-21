@@ -138,6 +138,28 @@ if (err) {
 console.log(err.message);
 }
 });
+//anket
+let anket = `create table if not exists anket ( 
+  stuNum int not null,
+  namesurname varchar(100) not null,
+  gyear int not null,
+  email varchar(100) not null,
+  phone varchar(11) not null,
+  program varchar(50),
+  adress varchar(50),
+  eyksmp varchar(50),
+  md varchar(5),
+  diio varchar(200),
+  skhg varchar(200),
+  aiphg varchar(200),
+  advicetostu varchar(200),
+  plus varchar(200)
+)`;
+mysql.query(anket, function(err, results, fields) {
+if (err) {
+console.log(err.message);
+}
+});
 //tablolar oluşturuldu
 // error handler
 app.use(function(err, req, res, next) {
