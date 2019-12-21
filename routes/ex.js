@@ -33,6 +33,7 @@ function setEx(post){
     if (err) {
     console.log(err.message);
     }
+    console.log("sadsdad");
   });
 }
 module.exports = router;

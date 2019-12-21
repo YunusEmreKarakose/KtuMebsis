@@ -5,7 +5,7 @@ const mysql=require('./database');
 /* En çok mezunun çalıştığı firma görüntülenebilmelidir. */
 router.get('/get1', function(req, res, next) {
   if(req.session.idNumber){
-    let getquery='SELECT COUNT(currentComp) AS c,currentComp AS most FROM veri_odev_2019.users GROUP BY currentComp ORDER BY Count(currentComp) DESC';
+    let getquery='SELECT COUNT(currentComp) AS c,currentComp AS most FROM users GROUP BY currentComp ORDER BY Count(currentComp) DESC';
     mysql.query(getquery, function(err, results, fields) {
       if (err) {
       console.log(err.message);
@@ -79,5 +79,52 @@ router.post('/get3', function(req, res, next) {
     }else{
       res.redirect('/');
     }
+});
+/* toplam mezun sayısı */
+router.get('/get4', function(req, res, next) {
+  if(req.session.idNumber){
+    let getquery='SELECT COUNT(idNumber) AS c FROM users';
+    mysql.query(getquery, function(err, results, fields) {
+      if (err) {
+      console.log(err.message);
+      }else{
+        var cc=results[0].c
+        res.send("sistemde "+cc+" mezun kayıtlı");
+      }
+    });
+  }else{
+    res.redirect('/');
+  }
+});
+/* toplam şirket sayısı */
+router.get('/get5', function(req, res, next) {
+  if(req.session.idNumber){
+    let getquery='SELECT COUNT(cId) AS c FROM companies';
+    mysql.query(getquery, function(err, results, fields) {
+      if (err) {
+      console.log(err.message);
+      }else{
+        var cc=results[0].c
+        res.send("sistemde "+cc+" şirket kayıtlı");
+      }
+    });
+  }else{
+    res.redirect('/');
+  }
+});
+/* hangi firmada kaç tane mezun var */
+router.get('/get6', function(req, res, next) {
+  if(req.session.idNumber){
+    let getquery='SELECT COUNT(currentComp) AS c,currentComp FROM users  GROUP BY currentComp';
+    mysql.query(getquery, function(err, results, fields) {
+      if (err) {
+      console.log(err.message);
+      }else{
+        res.send(results);
+      }
+    });
+  }else{
+    res.redirect('/');
+  }
 });
 module.exports = router;

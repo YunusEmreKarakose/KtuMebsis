@@ -72,5 +72,5 @@ router.get('/most', function(req, res, next) {
    res.redirect('/');
   }
 });
-
+/* ANKET */
 module.exports = router;

@@ -74,9 +74,8 @@ html(lang='en')
                             input(type='number', required='', autocomplete='off',name='startyear')
                         .field-wrap
                         label
-                            | Bitiş yılı
-                            span.req *
-                        input(type='number', required='', autocomplete='off',name='endyear')
+                            | Bitiş yılı(devam ediyorsa 0)
+                        input(type='number', autocomplete='off',name='endyear')
                         button.button.button-block(type='submit') Kaydet
                 // tab-content
                 // /form

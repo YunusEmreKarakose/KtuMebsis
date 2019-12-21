@@ -106,7 +106,7 @@ let ex = `create table if not exists ex (
     cId int not null,
     userId int not null,
     startyear int not null,
-    endyear int not null
+    endyear int 
 )`;
 mysql.query(ex, function(err, results, fields) {
 if (err) {

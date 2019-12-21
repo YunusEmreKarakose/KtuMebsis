@@ -56,15 +56,23 @@ html(lang='en')
                   form(action='/quit', method='get')
                     button.dropdown-item(type='submit') Çıkış
         .container-fluid
-          h1.mt-4 Simple Sidebar
-          p
-            | The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.
-          p
-            | Make sure to keep all page content within the 
-            code #page-content-wrapper
-            | . The top navbar is optional, and just for demonstration. Just create an element with the 
-            code #menu-toggle
-            |  ID which will toggle the menu when clicked.
+            .form
+                .tab-content
+                    #signup
+                    h1 ANKET
+                    form(action='/post/anket', method='post')
+                        .top-row
+                        .field-wrap
+                            label
+                            | postId
+                            span.req *
+                            input(type='text', required='', autocomplete='off',name='pId')
+                        .field-wrap
+                            label
+                            | YORUM 
+                            span.req *
+                            input(type='text', required='', autocomplete='off',name='comment')
+                        button.button.button-block(type='submit') Gönder
       // /#page-content-wrapper
       // /#wrapper
       // Bootstrap core JavaScript
